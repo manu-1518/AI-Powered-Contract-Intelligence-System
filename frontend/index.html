@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contract Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <span class="badge">Contract Intelligence</span>
+      <h1>Enterprise Contract Management Assistant</h1>
+      <p>
+        Monitor contracts, forecast retention risk, and prioritize renewal actions with
+        clear, data-driven insights.
+      </p>
+      <div class="hero-actions">
+        <button id="refresh-all" class="primary">Refresh Insights</button>
+        <button id="seed-data" class="ghost">Load Sample Data</button>
+      </div>
+      <p id="seed-status" class="helper"></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Contract Monitoring</h2>
+          <p>Active, expiring, and expired contracts with risk explanations.</p>
+        </div>
+        <span id="as-of" class="chip"></span>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h3>Total</h3>
+          <p id="summary-total">--</p>
+        </div>
+        <div class="summary-card">
+          <h3>Active</h3>
+          <p id="summary-active">--</p>
+        </div>
+        <div class="summary-card danger">
+          <h3>Expired</h3>
+          <p id="summary-expired">--</p>
+        </div>
+        <div class="summary-card warning">
+          <h3>Expiring 30 Days</h3>
+          <p id="summary-30">--</p>
+        </div>
+        <div class="summary-card warning">
+          <h3>Expiring 15 Days</h3>
+          <p id="summary-15">--</p>
+        </div>
+        <div class="summary-card critical">
+          <h3>Expiring 7 Days</h3>
+          <p id="summary-7">--</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Status</th>
+              <th>Days Left</th>
+              <th>Value</th>
+              <th>Risk</th>
+            </tr>
+          </thead>
+          <tbody id="contracts-table">
+            <tr>
+              <td colspan="5" class="placeholder">Loading contracts...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Client Retention Prediction</h2>
+          <p>Explainable churn risk and tailored actions for each client.</p>
+        </div>
+      </div>
+
+      <div class="prediction-panel">
+        <div class="prediction-controls">
+          <label for="company-select">Select client</label>
+          <select id="company-select"></select>
+          <button id="predict" class="primary">Get Prediction</button>
+        </div>
+        <div id="prediction-output" class="prediction-output">
+          <div class="placeholder">Select a client to view retention insights.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Notification Log</h2>
+          <p>Latest automated contract expiry emails.</p>
+        </div>
+        <button id="send-test-email" class="ghost">Send Test Email</button>
+      </div>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Recipient</th>
+              <th>Company</th>
+              <th>Days Left</th>
+              <th>Status</th>
+              <th>Sent At</th>
+            </tr>
+          </thead>
+          <tbody id="email-log-table">
+            <tr>
+              <td colspan="5" class="placeholder">No email activity yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Insights are generated from available client data and should be used as decision support.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
